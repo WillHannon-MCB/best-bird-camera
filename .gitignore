@@ -2,4 +2,4 @@ _*
 .*
 !.gitignore
 data/raw/*
-**/macaulay_checkpoints/*
+**/checkpoints/*
