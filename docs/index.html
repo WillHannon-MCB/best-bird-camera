@@ -37,7 +37,24 @@
 
         .vega-visualization {
             width: 100%;
-            margin: 20px 0;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Add styles for the plot container */
+        .vega-plot {
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        /* Style for the actual plot element */
+        .vega-embed {
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -68,7 +85,11 @@
                     if (plotId) {
                         const specResponse = await fetch(`plots/${plotId}.json`);
                         const spec = await specResponse.json();
-                        vegaEmbed(`#${plotId}`, spec);
+                        // Add config for proper centering
+                        vegaEmbed(`#${plotId}`, spec, {
+                            actions: false, // Optional: removes the menu
+                            center: true
+                        });
                     }
                 });
             } catch (error) {
